@@ -1,0 +1,125 @@
+<!-- WEBSITE URL: https://mbanyanszki.z6.web.core.windows.net/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage After Tax Calculator</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/styles.css">
+	<!--<link rel="stylesheet" type="text/css" href="./styles/style.css">-->
+</head>
+<body class="w3-mobile">
+    <header class="w3-container w3-blue w3-center">
+        <h1>Wage After Tax Calculator</h1>
+    </header>
+    <div class="w3-row">
+        <div class="w3-half w3-padding">
+            <table class="w3-table w3-container w3-card-4 w3-small">
+                <tr>
+                    <th><label for="salary">Gross Salary (€)</label></th>
+                    <td><input class="w3-input w3-border w3-round-large" type="number" id="salary" min="0"></td>
+                </tr>
+                <tr>
+                    <th><label for="status">Status</label></th>
+                    <td>
+                        <select class="w3-select w3-border w3-round-large" id="status">
+                            <option value="none" disabled selected>Please Select Your Status</option>
+                            <option value="single">Single</option>
+                            <option value="oneParent">One Parent Family</option>
+                            <option value="oneIncome">Married One Income</option>
+                            <option value="twoIncome">Married Two Income</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w3-red hide" id="error">Please enter a valid number!</td>
+                </tr>
+                <!--
+                <tr>
+                    <th><label for="taxCredit">Tax Credit</label></th>
+                    <td><fieldset class="w3-input w3-border w3-round-large" id="taxCredit"></fieldset>
+                </tr>
+                <tr>
+                    <th>After Tax</th>
+                    <td><fieldset id="value"></fieldset></td>
+                </tr>
+                
+                <tr>
+                    <th>Values</th>
+                    <td><fieldset id="detail"></fieldset></td>
+                </tr>
+             -->
+            </table>
+            <div class="w3-padding">
+                <a href="https://moodle.midlands.tus.ie/course/view.php?id=13632" class="w3-button w3-blue w3-round-large w3-left">Moodle</a>
+                <button class="w3-button w3-green w3-round-large w3-right" id="calculate_button">CALCULATE</button>
+                <button class="w3-button w3-red w3-round-large w3-right" id="clear_button" disabled>CLEAR</button>
+            </div>
+        </div>
+
+        <div class="w3-half w3-padding">
+            <table class="w3-table w3-container w3-card-4 w3-small w3-table-all" id="income_table">
+
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="w3-center w3-container w3-card-4 w3-small w3-sand">
+        <h4 class="w3-text-green">How to Use the Wage Calculator</h4>
+        <p>Enter Your annual gross salary and select your status from the drop-down box. 
+            The standard tax credit will be applied according to your status.
+        </p>
+        <p>When you are done, click the "Calculate" button, and you will be able to see the
+            gross income, total payable tax (PAYE), tax credit, net tax, PRSI, USC, total 
+            deductions, and the take home salary on annual, monthly, weekly, and daily 
+            bases in the table on the right.
+        </p>
+        <p>The data shown is based on 2024 rates.</p>
+    </div>
+    <br>
+    <div class="w3-center w3-container w3-card-4 w3-small w3-sand">
+        <h4 class="w3-text-green">2024 RATES</h4>
+        <h5 class="w3-text-green"><b>Tax Rates (PAYE)</b></h5>
+        <p><b>Single:</b> €0 - €42000 @ 20%; over €42000 @ 40%</p>
+        <p><b>One Parent Family:</b> €0 - €46000 @ 20%; over €46000 @ 40%</p>
+        <p><b>Married One Income:</b> €0 - €51000 @ 20%; over €51000 @ 40%</p>
+        <p><b>Married Two Income:</b> €0 - €84000 @ 20%; over €84000 @ 40%</p>
+        <br>
+        <h5 class="w3-text-green"><b>Tax Credits</b></h5>
+        <p><b>Single:</b> €1875</p>
+        <p><b>One Parent Family:</b> €5500 (PAYE: €1875 + Single: €1875 + Single Person Child 
+            Carer: €1750)
+        </p>
+        <p><b>Married One Income:</b> €3750</p>
+        <p><b>Married Two Income:</b> €3750</p>
+        <br>
+        <h5 class="w3-text-green"><b>PRSI Rates</b></h5>
+        <p><b>Weekly income is less than 352.01:</b> €0</p>
+        <p><b>Weekly income is 352.01:</b> @4.1% - €12 PRSI Credit</p>
+        <p><b>Weekly income is between 352.01 and 424:</b> is reduced by one sixth and taking 
+            €12 Tax Credit from it. Take this from the income @4.1%
+        </p>
+        <p><b>Weekly income is over 424.01:</b> @4.1%
+        </p>
+        <br>
+        <h5 class="w3-text-green"><b>USC Rates</b></h5>
+        <p><b>€0 - €12012:</b> @0.5%</p>
+        <p><b>€12012.01 - €25760:</b> @2%</p>
+        <p><b>€25760.01 - €70044:</b> @4%</p>
+        <p><b>over €70044:</b> @8%</p>
+    </div>
+    <br>
+
+    <footer class="w3-container w3-blue w3-center">
+        <p>Created By Martin B. 2024</p>
+    </footer>
+
+    <!--<button class="w3-button w3-round w3-blue">Weekly</button>
+    <button class="w3-button w3-round w3-blue">Fortnightly</button>
+    <button class="w3-button w3-round w3-blue">Monthly</button>-->
+
+
+    <script src="./scripts/scripts.js"></script>
+</body>
+</html>
