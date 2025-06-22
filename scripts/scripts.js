@@ -87,9 +87,13 @@ function calculateSalary()
     {
         taxCredit = EMPLOYEE_TAX_CREDIT + SINGLE_TAX_CREDIT + SINGLE_PERSON_CHILD_CARER_TAX_CREDIT
     }
-    if(relationship_status == "oneIncome" || relationship_status == "twoIncome")
+    else if(relationship_status == "oneIncome")
     {
         taxCredit = EMPLOYEE_TAX_CREDIT + MARRIED_TAX_CREDIT
+    }
+    else if(relationship_status == "twoIncome")
+    {
+        taxCredit = EMPLOYEE_TAX_CREDIT + (MARRIED_TAX_CREDIT / 2)
     }
  
     //$("taxCredit").innerText = taxCredit
